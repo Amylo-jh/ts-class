@@ -1,16 +1,27 @@
 "use strict";
-class Person {
-    hello() {
-        console.log('안녕하세요', Person.CITY);
+class Parent {
+    constructor(_name, _age) {
+        this._name = _name;
+        this._age = _age;
     }
-    change() {
-        Person.CITY = "LA";
+    print() {
+        console.log(`아녕하새오 이름은 ${this._name}이고, 나이는 ${this._age} 이빈다.`);
+    }
+    printName() {
+        console.log(this._name, this._age);
     }
 }
-Person.CITY = "SEOUL";
-const p1 = new Person();
-p1.hello();
-const p2 = new Person();
-p2.hello();
-p1.change();
-p2.hello();
+class Child extends Parent {
+    constructor(age) {
+        super("Mark Jr.", age);
+        this._name = "Mark Jr.";
+        this.gender = 'female';
+        this.printName();
+    }
+}
+const p = new Parent("Mark", 39);
+p.print();
+const c = new Child(17);
+c.print();
+const d = new Child(1);
+d.print();
